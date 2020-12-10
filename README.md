@@ -16,6 +16,8 @@ This repository is dedicated to some wrapper function for furture analysis convi
 
 **volcano_plot.R** is a function that output the volcano plot given the data frame with effect size, p value estimate, and taxon name. 
 
+**PCoA_biplot.R** is a function that output the PCoA biplot given the data frame and cut off for correlation with PC axis (default as 0.67).
+
 
 ----------To be expected for clr abundance----------
 
