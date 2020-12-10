@@ -5,5 +5,7 @@ This repository is dedicated to some wrapper function for furture analysis convi
 
 **logistic_model_check.R** is a function that takes in the logistics regression and data frame and output for a visual diagnosis for logistics regression. 
 
+**multiple_linear_regression.R** is a function that output multivariate linear regressions with covariates adjustments, exposure, outcome as input.  
+
 
 
