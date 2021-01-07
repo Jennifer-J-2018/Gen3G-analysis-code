@@ -1,0 +1,16 @@
+get_top_rank_taxa = function(physeq_prune,number = 20){
+physeq_prune_genus = physeq_prune %>% tax_glom(taxrank="Genus")
+physeq_prune_genus_relative = transform_sample_counts(physeq_prune_genus, function(x) x/sum(x))
+collapsed_genus <- as.data.frame(otu_table(physeq_prune_genus_relative))
+collapsed_genus$mean <- rowMeans(collapsed_genus)
+collapsed_genus$OTUID <- rownames(collapsed_genus)
+collapsed_genus <- collapsed_genus[order(-collapsed_genus$mean),]
+collapsed_genus <- data.frame(collapsed_genus)
+collapsed_tax <- data.frame(tax_table(physeq_prune_genus_relative))
+collapsed_tax$OTUID <- rownames(collapsed_tax)
+collapsed_merged <- merge(collapsed_genus, collapsed_tax, by="OTUID")
+collapsed_merged <- collapsed_merged[order(-collapsed_merged$mean),]
+top_taxa <- data.frame(collapsed_merged$Genus[1:number])
+top_taxa$mean <- collapsed_merged$mean[1:number]
+return(top_taxa)
+}
